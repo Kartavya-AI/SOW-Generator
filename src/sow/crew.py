@@ -2,8 +2,7 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
-
-
+from .tools.serper_tool import serper_tool
 @CrewBase
 class Sow:
     """Scope of Work Generator Crew"""
@@ -24,6 +23,13 @@ class Sow:
             verbose=True)
 
     @agent
+    def BudgetEstimator_Agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config['BudgetEstimator_Agent'],
+            tools=[serper_tool],
+            verbose=True)
+
+    @agent
     def ContentWriter_Agent(self) -> Agent:
         return Agent(
             config=self.agents_config['ContentWriter_Agent'],
@@ -33,6 +39,7 @@ class Sow:
     def PolicyAgent(self) -> Agent:
         return Agent(
             config=self.agents_config['PolicyAgent'],
+            tools=[serper_tool],
             verbose=True)
 
     @agent
@@ -58,10 +65,18 @@ class Sow:
             context=[self.parse_input_task()])
 
     @task
+    def estimate_budget_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['estimate_budget_task'],
+            context=[self.parse_input_task()])
+
+    @task
     def generate_content_task(self) -> Task:
         return Task(
             config=self.tasks_config['generate_content_task'],
-            context=[self.parse_input_task(),self.build_scope_outline_task()])
+            context=[self.parse_input_task(),
+                     self.build_scope_outline_task(),
+                     self.estimate_budget_task()])
 
     @task
     def insert_policy_clauses_task(self) -> Task:
