@@ -1,54 +1,143 @@
-# Sow Crew
+# 📄 AI-Powered Scope of Work (SoW) Generator using CrewAI
 
-Welcome to the Sow Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+<p align="center">
+  <a href="https://streamlit.io" target="_blank">
+    <img src="https://img.shields.io/badge/Built%20with-Streamlit-E74C3C?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
+  </a>
+  <a href="https://github.com/joaomdmoura/crewAI" target="_blank">
+    <img src="https://img.shields.io/badge/Powered%20by-CrewAI-5D3FD3?style=for-the-badge&logo=lightning&logoColor=white" alt="CrewAI">
+  </a>
+  <a href="https://github.com/yourusername/sow-generator/fork" target="_blank">
+    <img src="https://img.shields.io/badge/Fork%20me%20on-GitHub-2F80ED?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Fork">
+  </a>
+</p>
 
-## Installation
+Craft professional, legally sound Scope of Work (SoW) documents — instantly and effortlessly.
 
-Ensure you have Python >=3.10 <3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+This intelligent tool leverages the power of [CrewAI](https://github.com/joaomdmoura/crewAI) to automate the entire SoW creation process. From parsing messy, unstructured input to generating clean, contract-ready deliverables, it uses a team of collaborative AI agents to do the heavy lifting.
 
-First, if you haven't already, install uv:
+💼 Perfect for freelancers, agencies, and businesses needing to formalize project terms quickly — without legal headaches or template juggling.
 
-```bash
-pip install uv
+![App UI Preview](app_ui1.png)
+
+---
+
+### ⚡ What’s Inside?
+
+- **No templates. No boilerplate. Just smart AI.**
+- Designed for **clarity, legal safety, and professionalism**
+- Generates detailed SoWs with sections like:
+  - Project Overview
+  - Deliverables
+  - Timelines
+  - Payment Terms
+  - IP Ownership
+  - Confidentiality & Revisions
+
+Let the AI handle the paperwork — so you can focus on your work.
+
+## 🚀 What It Does
+
+**This tool helps you:**
+
+- ✅ Parse unstructured client input
+- ✅ Build a formalized SoW outline
+- ✅ Generate polished, sectioned content
+- ✅ Add legal and financial clauses
+- ✅ Format the output in Markdown (PDF-ready)
+
+Whether you're a freelancer, agency, or enterprise team — this app saves hours of back-and-forth and manual writing.
+
+---
+
+## 🧠 Powered by CrewAI Agents
+
+The system uses a sequence of specialized agents:
+
+| Agent            | Role                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| 🧾 InputParser   | Extracts structured data from raw user text                  |
+| 🗂️ ScopeBuilder  | Designs a formal SoW structure with all relevant sections    |
+| ✍️ ContentWriter | Fills each section with context-aware content                |
+| ⚖️ PolicyAgent   | Adds clauses for IP, confidentiality, revisions, and payment |
+| 🔍 QualityCheck  | Reviews clarity, structure, and professionalism              |
+| 🎨 Formatter     | Outputs clean, shareable Markdown                            |
+
+---
+
+## ✨ Features
+
+- **🧠 AI-Powered Generation**: Built on CrewAI with support for Gemini and Serper APIs
+- **📋 Full Document Coverage**: Objectives, Deliverables, Payment Terms, IP Rights, etc.
+- **🛡️ Legal Clauses Built-In**: Contracts you can trust
+- **📄 PDF-Ready Markdown Output**: Clean and shareable results
+- **🧩 Configurable Agents & Tools**: Easily extend or customize
+
+---
+
+## 📂 Project Structure
+
+```
+├── app.py              # Streamlit app UI and main entry point
+├── app_ui1.png         # Screenshot of the input form UI
+├── app_ui2.png         # Screenshot of the generated SoW document
+├── pyproject.toml      # Project metadata & dependencies
+├── README.md           # This documentation file
+├── requirements.txt    # Python dependencies
+├── src                 # Source code
+│ └── sow               # Scope of Work crew modules
+│ ├── config
+│ │ ├── agents.yaml     # Agent configurations
+│ │ └── tasks.yaml      # Task configurations
+│ ├── crew.py           # Crew and agents setup
+│ ├── main.py           # CLI runner script
+│ └── tools             # Custom tools & integrations (e.g., web search)
+└── uv.lock             # Dependency lock file
 ```
 
-Next, navigate to your project directory and install the dependencies:
+---
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
+## Getting Started
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+### Prerequisites
 
-- Modify `src/sow/config/agents.yaml` to define your agents
-- Modify `src/sow/config/tasks.yaml` to define your tasks
-- Modify `src/sow/crew.py` to add your own logic, tools and specific args
-- Modify `src/sow/main.py` to add custom inputs for your agents and tasks
+- Python 3.10+
+- (Optional) API keys for Gemini AI and Serper Search to enhance AI and web search capabilities
 
-## Running the Project
+### 🖥️ Running the App
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+1. Clone this repository:
 
 ```bash
-$ crewai run
+git clone https://github.com/yourusername/sow-generator.git
+cd sow-generator
 ```
 
-This command initializes the SOW Crew, assembling the agents and assigning them tasks as defined in your configuration.
+2. Install dependencies:
+   pip install -r requirements.txt
+3. Set your API keys in the Streamlit sidebar
+4. Launch the Streamlit app:
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+```bash
+streamlit run app.py
+```
 
-## Understanding Your Crew
+- Open the displayed URL in your browser, enter project details, and generate a professional Scope of Work document instantly.
 
-The SOW Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+## 📌 Tips for Best Results
 
-## Support
+- Provide clear, concise project descriptions to improve parsing accuracy.
 
-For support, questions, or feedback regarding the Sow Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+- Include timelines, deliverables, and any special requirements upfront.
 
-Let's create wonders together with the power and simplicity of crewAI.
+- Review generated drafts carefully and customize if needed.
+
+- Use API keys to enable real-time web search and up-to-date cost estimates.
+
+## Screenshots
+
+![App UI Preview](app_ui2.png)
+
+## License
+
+This project is licensed under the MIT License.
