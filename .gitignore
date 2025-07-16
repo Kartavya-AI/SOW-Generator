@@ -1,0 +1,5 @@
+.env
+__pycache__/
+.DS_Store
+scope_of_work2.md
+.venv
