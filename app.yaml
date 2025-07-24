@@ -1,0 +1,6 @@
+runtime: python310
+entrypoint: gunicorn -b :$PORT api:app --timeout 1000
+
+handlers:
+  - url: /.*
+    script: auto
