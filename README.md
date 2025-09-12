@@ -109,7 +109,7 @@ The system uses a sequence of specialized agents:
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/yourusername/sow-generator.git
+git clone https://github.com/Kartavya-AI/SOW-Generator.git
 cd sow-generator
 ```
 
