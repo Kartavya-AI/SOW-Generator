@@ -33,10 +33,10 @@ class GenerateSowRequest(BaseModel):
 
 class GenerateSowResponse(BaseModel):
     sow_content: str
-
-@app.get("/status", summary="Health check endpoint")
-async def status():
-    return {"status": "ok"}
+    
+@app.get("/")
+async def root():
+    return {"message": "SOW Generator API is running"}
 
 @app.get("/status/health", summary="Health check endpoint")
 async def status():
