@@ -3,12 +3,15 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+# Install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy source code
 COPY . .
 
-EXPOSE 8080
+# Expose Cloud Run port
+ENV PORT=8080
 
-# 👇 adjust api:app to match your filename and FastAPI instance
+# Start FastAPI with uvicorn
 CMD ["uvicorn", "fastapi_app:app", "--host", "0.0.0.0", "--port", "8080"]
