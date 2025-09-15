@@ -7,6 +7,12 @@ import os
 from dotenv import load_dotenv
 from src.sow.crew import Sow
 
+app = FastAPI(
+    title="Scope of Work Generator API",
+    description="API to generate Scope of Work documents using CrewAI",
+    version="1.0.0"
+)
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -18,12 +24,6 @@ if gemini_api_key:
 # Set default model to Gemini if not set
 if not os.getenv("MODEL"):
     os.environ["MODEL"] = "gemini/gemini-2.5-flash-preview-05-20"
-
-app = FastAPI(
-    title="Scope of Work Generator API",
-    description="API to generate Scope of Work documents using CrewAI",
-    version="1.0.0"
-)
 
 class GenerateSowRequest(BaseModel):
     client: str = Field(..., example="Alice from BrandCo")
