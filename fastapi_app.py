@@ -6,11 +6,20 @@ import sys
 import os
 from dotenv import load_dotenv
 from src.sow.crew import Sow
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="Scope of Work Generator API",
     description="API to generate Scope of Work documents using CrewAI",
     version="1.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
 )
 
 # Load environment variables from .env file
